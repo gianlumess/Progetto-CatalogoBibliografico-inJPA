@@ -4,6 +4,9 @@ import gianlucamessina.entities.Documento;
 import gianlucamessina.exceptions.NotFoundExceptionLong;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
+
+import java.util.List;
 
 public class DocumentoDao {
     private final EntityManager em;
@@ -49,5 +52,11 @@ public class DocumentoDao {
         transaction.commit();
 
         System.out.println("La rivista/libro con codice ISBN: " + codiceIsbn + " è stato rimosso con successo!");
+    }
+
+    public List<Documento> getByYearOfPublication(int anno) {
+        TypedQuery<Documento> list = em.createQuery("SELECT d FROM Documento d WHERE d.annoPubblicazione=:y", Documento.class);
+        list.setParameter("y", anno);
+        return list.getResultList();
     }
 }

@@ -30,6 +30,6 @@ public class Rivista extends Documento {
     public String toString() {
         return "Rivista{" +
                 "periodicita=" + periodicita +
-                '}';
+                "} " + super.toString();
     }
 }

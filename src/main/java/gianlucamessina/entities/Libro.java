@@ -42,6 +42,6 @@ public class Libro extends Documento {
         return "Libro{" +
                 "autore='" + autore + '\'' +
                 ", genere='" + genere + '\'' +
-                '}';
+                "} " + super.toString();
     }
 }

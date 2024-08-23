@@ -29,7 +29,7 @@ public class Application {
 
         Libro blood = new Libro(faker.book().hashCode(), faker.book().title(), 2000, 300, faker.book().author(), faker.book().genre());
         //docDao.save(blood);
-        
+
 
         Libro francoiseSagan = new Libro(faker.book().hashCode(), faker.book().title(), 2012, 250, faker.book().author(), faker.book().genre());
         //docDao.save(francoiseSagan);
@@ -65,7 +65,7 @@ public class Application {
 
         Utente eusebioFromDb = userDao.getByTesseraId(1);
         Documento seaHorseFromDb = docDao.getByIsbn(1267168782);
-
+        //System.out.println(seaHorseFromDb);
 
         Prestito p1 = new Prestito(olimpiaFromDb, vogueFromDb, LocalDate.now(), LocalDate.now().plusDays(45));
         //prestDao.save(p1);
@@ -73,6 +73,8 @@ public class Application {
         Prestito p2 = new Prestito(eusebioFromDb, seaHorseFromDb, LocalDate.now().minusMonths(4), LocalDate.now().minusMonths(2));
         //prestDao.save(p2);
 
+        //*********************************** RICERCA PER ANNO DI PUBBLICAZIONE  **********************************
 
+        docDao.getByYearOfPublication(2020).forEach(System.out::println);
     }
 }
