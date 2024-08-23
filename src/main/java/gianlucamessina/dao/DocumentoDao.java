@@ -7,7 +7,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 
-import java.lang.reflect.Type;
 import java.util.List;
 
 public class DocumentoDao {
@@ -76,7 +75,13 @@ public class DocumentoDao {
         return libri;
     }
 
-    public List<Documento> getByTitle(String titolo){
-        TypedQuery<Documento> query = em.createQuery("SELECT d FROM Documento d WHERE")
+    public List<Documento> getByTitle(String titolo) {
+        TypedQuery<Documento> query = em.createQuery("SELECT d FROM Documento d WHERE LOWER(d.titolo) LIKE LOWER(:title)", Documento.class);
+        query.setParameter("title", "%" + titolo + "%");
+        List<Documento> lista = query.getResultList();
+        if (lista.isEmpty()) {
+            System.out.println("Nessun risultato trovato con il titolo: " + titolo);
+        }
+        return lista;
     }
 }

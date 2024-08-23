@@ -86,7 +86,7 @@ public class Application {
         //*********************************** RICERCA PER TITOLO  **********************************
 
         System.out.println("************* RICERCA PER TITOLO *************");
-
-
+        //ricerca per titolo o parte di titolo case insensitive
+        docDao.getByTitle("sea").forEach(System.out::println);
     }
 }
