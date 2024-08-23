@@ -19,17 +19,18 @@ public class Prestito {
     @Column(name = "data_inizio_prestito")
     private LocalDate inizioPrestito;
     @Column(name = "data_restituzione_prevista")
-    private LocalDate RestituzionePrevista = inizioPrestito.plusDays(30);
+    private LocalDate RestituzionePrevista;
     @Column(name = "data_restituzione_effettiva")
     private LocalDate restituzioneEffettiva;
 
     public Prestito() {
     }
 
-    public Prestito(Utente utente, Documento elementoPrestato, LocalDate inizioPrestito, LocalDate restituzioneEffettiva) {
+    public Prestito(Utente utente, Documento elementoPrestato, LocalDate inizioPrestito, LocalDate restituzionePrevista, LocalDate restituzioneEffettiva) {
         this.utente = utente;
         this.elementoPrestato = elementoPrestato;
         this.inizioPrestito = inizioPrestito;
+        this.RestituzionePrevista = inizioPrestito.plusDays(30);
         this.restituzioneEffettiva = restituzioneEffettiva;
     }
 

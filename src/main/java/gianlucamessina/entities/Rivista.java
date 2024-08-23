@@ -12,7 +12,7 @@ public class Rivista extends Documento {
     public Rivista() {
     }
 
-    public Rivista(String codiceIsbn, String titolo, int annoPubblicazione, int numeroPagine, Periodicita periodicita) {
+    public Rivista(long codiceIsbn, String titolo, int annoPubblicazione, int numeroPagine, Periodicita periodicita) {
         super(codiceIsbn, titolo, annoPubblicazione, numeroPagine);
         this.periodicita = periodicita;
     }

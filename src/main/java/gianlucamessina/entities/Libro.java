@@ -15,7 +15,7 @@ public class Libro extends Documento {
     public Libro() {
     }
 
-    public Libro(String codiceIsbn, String titolo, int annoPubblicazione, int numeroPagine, String autore, String genere) {
+    public Libro(long codiceIsbn, String titolo, int annoPubblicazione, int numeroPagine, String autore, String genere) {
         super(codiceIsbn, titolo, annoPubblicazione, numeroPagine);
         this.autore = autore;
         this.genere = genere;

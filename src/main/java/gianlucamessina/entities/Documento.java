@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public abstract class Documento {
     @Id
     @Column(name = "codice_isbn")
-    private String codiceIsbn;
+    private long codiceIsbn;
     @Column(name = "titolo")
     private String titolo;
     @Column(name = "anno_di_pubblicazione")
@@ -18,18 +18,18 @@ public abstract class Documento {
     public Documento() {
     }
 
-    public Documento(String codiceIsbn, String titolo, int annoPubblicazione, int numeroPagine) {
+    public Documento(long codiceIsbn, String titolo, int annoPubblicazione, int numeroPagine) {
         this.codiceIsbn = codiceIsbn;
         this.titolo = titolo;
         this.annoPubblicazione = annoPubblicazione;
         this.numeroPagine = numeroPagine;
     }
 
-    public String getCodiceIsbn() {
+    public long getCodiceIsbn() {
         return codiceIsbn;
     }
 
-    public void setCodiceIsbn(String codiceIsbn) {
+    public void setCodiceIsbn(long codiceIsbn) {
         this.codiceIsbn = codiceIsbn;
     }
 
