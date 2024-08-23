@@ -82,5 +82,11 @@ public class Application {
 
         System.out.println("************* RICERCA LIBRO PER AUTORE *************");
         docDao.getBooksByAuthor("Tolomeo Fabbri").forEach(System.out::println);
+
+        //*********************************** RICERCA PER TITOLO  **********************************
+
+        System.out.println("************* RICERCA PER TITOLO *************");
+
+
     }
 }

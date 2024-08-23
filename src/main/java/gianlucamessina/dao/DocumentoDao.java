@@ -7,6 +7,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 public class DocumentoDao {
@@ -56,14 +57,26 @@ public class DocumentoDao {
     }
 
     public List<Documento> getByYearOfPublication(int anno) {
-        TypedQuery<Documento> list = em.createQuery("SELECT d FROM Documento d WHERE d.annoPubblicazione=:y", Documento.class);
-        list.setParameter("y", anno);
-        return list.getResultList();
+        TypedQuery<Documento> query = em.createQuery("SELECT d FROM Documento d WHERE d.annoPubblicazione=:y", Documento.class);
+        query.setParameter("y", anno);
+        List<Documento> lista = query.getResultList();
+        if (lista.isEmpty()) {
+            System.out.println("Nessun risultato trovato per l'anno di pubblicazione: " + anno);
+        }
+        return lista;
     }
 
     public List<Libro> getBooksByAuthor(String autore) {
-        TypedQuery<Libro> list = em.createQuery("SELECT b FROM Libro b WHERE b.autore=:author", Libro.class);
-        list.setParameter("author", autore);
-        return list.getResultList();
+        TypedQuery<Libro> query = em.createQuery("SELECT b FROM Libro b WHERE b.autore=:author", Libro.class);
+        query.setParameter("author", autore);
+        List<Libro> libri = query.getResultList();
+        if (libri.isEmpty()) {
+            System.out.println("Nessun libro trovato per l'autore: " + autore);
+        }
+        return libri;
+    }
+
+    public List<Documento> getByTitle(String titolo){
+        TypedQuery<Documento> query = em.createQuery("SELECT d FROM Documento d WHERE")
     }
 }
