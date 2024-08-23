@@ -27,7 +27,7 @@ public class Application {
 
         //*********************************** SAVE DI LIBRI E RIVISTE**********************************
 
-        Libro blood = new Libro(faker.book().hashCode(), faker.book().title(), 2000, 300, faker.book().author(), faker.book().genre());
+        Libro blood = new Libro(faker.book().hashCode(), faker.book().title(), 2000, 300, "Tolomeo Fabbri", faker.book().genre());
         //docDao.save(blood);
 
 
@@ -74,7 +74,13 @@ public class Application {
         //prestDao.save(p2);
 
         //*********************************** RICERCA PER ANNO DI PUBBLICAZIONE  **********************************
-
+        System.out.println("************* RICERCA PER ANNO DI PUBBLICAZIONE = 2020 *************");
         docDao.getByYearOfPublication(2020).forEach(System.out::println);
+
+
+        //*********************************** RICERCA PER AUTORE  **********************************
+
+        System.out.println("************* RICERCA LIBRO PER AUTORE *************");
+        docDao.getBooksByAuthor("Tolomeo Fabbri").forEach(System.out::println);
     }
 }

@@ -1,6 +1,7 @@
 package gianlucamessina.dao;
 
 import gianlucamessina.entities.Documento;
+import gianlucamessina.entities.Libro;
 import gianlucamessina.exceptions.NotFoundExceptionLong;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -57,6 +58,12 @@ public class DocumentoDao {
     public List<Documento> getByYearOfPublication(int anno) {
         TypedQuery<Documento> list = em.createQuery("SELECT d FROM Documento d WHERE d.annoPubblicazione=:y", Documento.class);
         list.setParameter("y", anno);
+        return list.getResultList();
+    }
+
+    public List<Libro> getBooksByAuthor(String autore) {
+        TypedQuery<Libro> list = em.createQuery("SELECT b FROM Libro b WHERE b.autore=:author", Libro.class);
+        list.setParameter("author", autore);
         return list.getResultList();
     }
 }
