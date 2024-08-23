@@ -1,7 +1,7 @@
 package gianlucamessina.dao;
 
 import gianlucamessina.entities.Documento;
-import gianlucamessina.exceptions.NotFoundException;
+import gianlucamessina.exceptions.NotFoundExceptionLong;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
@@ -31,9 +31,23 @@ public class DocumentoDao {
         System.out.println("Il libro/rivista " + documento.getTitolo() + " è stato salvato con successo!");
     }
 
-    public Documento getByIsbn(String isbn) {
+    public Documento getByIsbn(long isbn) {
         Documento found = em.find(Documento.class, isbn);
-        if (found == null) throw new NotFoundException(isbn);
+        if (found == null) throw new NotFoundExceptionLong(isbn);
         return found;
+    }
+
+    public void deleteByIsbn(long codiceIsbn) {
+        Documento found = this.getByIsbn(codiceIsbn);
+
+        EntityTransaction transaction = em.getTransaction();
+
+        transaction.begin();
+
+        em.remove(found);
+
+        transaction.commit();
+
+        System.out.println("La rivista/libro con codice ISBN: " + codiceIsbn + " è stato rimosso con successo!");
     }
 }

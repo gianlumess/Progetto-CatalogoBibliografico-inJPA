@@ -23,12 +23,13 @@ public class Application {
         DocumentoDao docDao = new DocumentoDao(em);
         UtenteDao userDao = new UtenteDao(em);
         PrestitoDao prestDao = new PrestitoDao(em);
-        System.out.println("Hello World!");
+
 
         //*********************************** SAVE DI LIBRI E RIVISTE**********************************
 
-        Libro downToASunlessSea = new Libro(faker.book().hashCode(), faker.book().title(), 2000, 300, faker.book().author(), faker.book().genre());
-        //docDao.save(downToASunlessSea);
+        Libro blood = new Libro(faker.book().hashCode(), faker.book().title(), 2000, 300, faker.book().author(), faker.book().genre());
+        //docDao.save(blood);
+        
 
         Libro francoiseSagan = new Libro(faker.book().hashCode(), faker.book().title(), 2012, 250, faker.book().author(), faker.book().genre());
         //docDao.save(francoiseSagan);
@@ -60,11 +61,18 @@ public class Application {
         //*********************************** SAVE DI PRESTITI  **********************************
 
         Utente olimpiaFromDb = userDao.getByTesseraId(2);
-        Documento vogueFromDb = docDao.getByIsbn("757660418");
+        Documento vogueFromDb = docDao.getByIsbn(757660418);
+
+        Utente eusebioFromDb = userDao.getByTesseraId(1);
+        Documento seaHorseFromDb = docDao.getByIsbn(1267168782);
+
 
         Prestito p1 = new Prestito(olimpiaFromDb, vogueFromDb, LocalDate.now(), LocalDate.now().plusDays(45));
         //prestDao.save(p1);
 
-        
+        Prestito p2 = new Prestito(eusebioFromDb, seaHorseFromDb, LocalDate.now().minusMonths(4), LocalDate.now().minusMonths(2));
+        //prestDao.save(p2);
+
+
     }
 }
