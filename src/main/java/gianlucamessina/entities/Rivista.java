@@ -1,12 +1,13 @@
 package gianlucamessina.entities;
 
 import gianlucamessina.enums.Periodicita;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "riviste")
 public class Rivista extends Documento {
+    @Column(name = "periodicità")
+    @Enumerated(EnumType.STRING)
     private Periodicita periodicita;
 
     public Rivista() {

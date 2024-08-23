@@ -11,10 +11,10 @@ public class Prestito {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @ManyToOne
-    @JoinColumn(name = "utente")
+    @JoinColumn(name = "numero_tessera_utente")
     private Utente utente;
     @ManyToOne
-    @JoinColumn(name = "elemento_prestato")
+    @JoinColumn(name = "codice_isbn_elemento_prestato")
     private Documento elementoPrestato;
     @Column(name = "data_inizio_prestito")
     private LocalDate inizioPrestito;
@@ -26,7 +26,7 @@ public class Prestito {
     public Prestito() {
     }
 
-    public Prestito(Utente utente, Documento elementoPrestato, LocalDate inizioPrestito, LocalDate restituzionePrevista, LocalDate restituzioneEffettiva) {
+    public Prestito(Utente utente, Documento elementoPrestato, LocalDate inizioPrestito, LocalDate restituzioneEffettiva) {
         this.utente = utente;
         this.elementoPrestato = elementoPrestato;
         this.inizioPrestito = inizioPrestito;
