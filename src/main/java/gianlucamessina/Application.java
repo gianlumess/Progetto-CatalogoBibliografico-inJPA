@@ -88,5 +88,11 @@ public class Application {
         System.out.println("************* RICERCA PER TITOLO *************");
         //ricerca per titolo o parte di esso case insensitive
         docDao.getByTitle("sea").forEach(System.out::println);
+
+        //*********************************** RICERCA LISTA PRESTITI DATO ID DELLA TESSERA DELL'UTENTE  **********************************
+
+        System.out.println("************* RICERCA PRESTITI DI UN UTENTE *************");
+        System.out.println("ricerca dei prestiti dell'utente con id della carta: '1'");
+        prestDao.getLoansByUserCardId(1).forEach(System.out::println);
     }
 }
