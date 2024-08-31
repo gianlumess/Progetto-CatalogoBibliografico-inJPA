@@ -99,5 +99,12 @@ public class Application {
             prestDao.getCurrentLoansByUserCardId(1).forEach(System.out::println);
         }
 
+        //*********************************** RICERCA LISTA PRESTITI SCADUTI E NON ANCORA RESTITUITI  **********************************
+
+        System.out.println("************* RICERCA LISTA PRESTITI SCADUTI E NON ANCORA RESTITUITI *************");
+        if (prestDao.getLoansExpiredAndNotReturned(LocalDate.now()).isEmpty()) {
+            System.out.println("Nessun prestito scaduto e non restituito trovato");
+        }
+        prestDao.getLoansExpiredAndNotReturned(LocalDate.now()).forEach(System.out::println);
     }
 }
