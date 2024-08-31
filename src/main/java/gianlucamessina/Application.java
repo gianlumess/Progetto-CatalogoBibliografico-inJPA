@@ -93,6 +93,11 @@ public class Application {
 
         System.out.println("************* RICERCA PRESTITI DI UN UTENTE *************");
         System.out.println("ricerca dei prestiti dell'utente con id della carta: '1'");
-        prestDao.getLoansByUserCardId(1).forEach(System.out::println);
+        if (prestDao.getCurrentLoansByUserCardId(1).isEmpty()) {
+            System.out.println("Nessun prestito in corso trovato per l'utente cercato");
+        } else if (!prestDao.getCurrentLoansByUserCardId(1).isEmpty()) {
+            prestDao.getCurrentLoansByUserCardId(1).forEach(System.out::println);
+        }
+
     }
 }

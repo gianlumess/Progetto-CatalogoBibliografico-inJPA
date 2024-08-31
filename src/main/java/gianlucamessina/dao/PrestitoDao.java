@@ -33,12 +33,9 @@ public class PrestitoDao {
         System.out.println("Il prestito effettuato dall'utente : " + prestito.getUtente().getNome() + " " + prestito.getUtente().getCognome() + " con numero di tessera: " + prestito.getUtente().getNumeroTessera() + " è stato salvato con successo!");
     }
 
-    public List<Prestito> getLoansByUserCardId(int userCardId) {
-        TypedQuery<Prestito> query = em.createQuery("SELECT p FROM Prestito p WHERE p.utente.id =:id_tessera", Prestito.class);
+    public List<Prestito> getCurrentLoansByUserCardId(int userCardId) {
+        TypedQuery<Prestito> query = em.createQuery("SELECT p FROM Prestito p WHERE p.utente.id =:id_tessera AND p.restituzioneEffettiva IS NULL", Prestito.class);
         query.setParameter("id_tessera", userCardId);
-        if (query.getResultList().isEmpty()) {
-            System.out.println("Nessun prestito in corso per l'utente cercato");
-        }
         return query.getResultList();
     }
 }
